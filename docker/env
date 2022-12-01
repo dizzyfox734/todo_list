@@ -1,0 +1,6 @@
+PROJECT_NAME=dockerpublishtest
+COMPOSE_PROJECT_NAME=${PROJECT_NAME}
+
+NGINX_ROOT_DIR=/etc/nginx
+
+WEB_VERSION=1.1-SNAPSHOT # version in build.gradle file
