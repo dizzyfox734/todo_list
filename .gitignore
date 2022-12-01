@@ -1,0 +1,6 @@
+.vscode
+backup
+docker/.env
+
+dockerpublishtest 
+

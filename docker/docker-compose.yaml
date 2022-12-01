@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  web:
+    container_name: ${PROJECT_NAME}_web
+    build:
+      context: ./web
+    volumes:
+      - ../${PROJECT_NAME}/build/libs/${PROJECT_NAME}-${WEB_VERSION}.jar:/app.jar
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+
+  nginx:
+    container_name: ${PROJECT_NAME}_nginx
+    build:
+      context: ./nginx
+      args:
+        - NGINX_ROOT_DIR=${NGINX_ROOT_DIR}
+        - PROJECT_NAME=${PROJECT_NAME}
+    volumes:
+      - ./nginx/nginx.conf:${NGINX_ROOT_DIR}/conf.d/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - web
+
