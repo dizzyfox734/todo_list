@@ -10,7 +10,7 @@ services:
     expose:
       - 8080
     ports:
-      - 8080:8080
+      - 2258:8080
 
   nginx:
     container_name: ${PROJECT_NAME}_nginx
@@ -22,7 +22,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:${NGINX_ROOT_DIR}/conf.d/nginx.conf
     ports:
-      - 80:80
+      - 35:80
     depends_on:
       - web
 

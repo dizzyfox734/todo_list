@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOSITORY=/home/ec2-user/app/docker_empty
+REPOSITORY=/home/ec2-user/app/todo_list
 PROJECT_NAME=web
 JAR_DIR=build/libs
 BACKUP_DIR=backup
