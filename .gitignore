@@ -4,3 +4,12 @@ docker/.env
 
 dockerpublishtest 
 
+# IntelliJ project files
+web/.idea
+web/*.iml
+web/out
+web/gen
+
+web/.gradle
+web/build/
+!web/gradle/wrapper/gradle-wrapper.jar

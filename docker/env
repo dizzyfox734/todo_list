@@ -1,4 +1,4 @@
-PROJECT_NAME=dockerpublishtest
+PROJECT_NAME=projectname
 COMPOSE_PROJECT_NAME=${PROJECT_NAME}
 
 NGINX_ROOT_DIR=/etc/nginx
