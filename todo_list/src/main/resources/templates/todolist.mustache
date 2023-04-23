@@ -1,5 +1,22 @@
 {{>layout/header}}
 
 <h1>Todo list</h1>
-
+<table>
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>할 일</th>
+            <th>상태</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#todos}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{content}}</td>
+                <td>{{completed_fl}}</td>
+            </tr>
+        {{/todos}}
+    </tbody>
+</table>
 {{>layout/footer}}

@@ -14,7 +14,7 @@ public class Todos {
     @Column(length = 200, nullable = false)
     private String content;
     @Column(nullable = false)
-    private boolean completed_fl;
+    private Boolean completed_fl;
 
     public Todos() {
         super();
@@ -23,9 +23,9 @@ public class Todos {
     public static class Builder {
         private Long id;
         private String content;
-        private boolean completed_fl;
+        private Boolean completed_fl;
 
-        public Builder(String content, boolean completed_fl) {
+        public Builder(String content, Boolean completed_fl) {
             this.content = content;
             this.completed_fl = completed_fl;
         }
@@ -49,7 +49,7 @@ public class Todos {
         return completed_fl;
     }
 
-    public void update(String content, boolean completed_fl) {
+    public void update(String content, Boolean completed_fl) {
         this.content = content;
         this.completed_fl = completed_fl;
     }
