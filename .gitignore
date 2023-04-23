@@ -2,8 +2,6 @@
 backup
 docker/.env
 
-dockerpublishtest 
-
 # IntelliJ project files
 web/.idea
 web/*.iml

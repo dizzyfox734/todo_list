@@ -2,4 +2,4 @@
 set -e
 
 docker-compose down --volumes
-docker rmi dockerpublishtest-web dockerpublishtest-nginx
+docker rmi todo_list-web todo_list-nginx

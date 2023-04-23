@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app/todo_list
-PROJECT_NAME=web
+PROJECT_NAME=todo_list
 JAR_DIR=build/libs
 BACKUP_DIR=backup
 SCRIPT_DIR=docker/scripts
