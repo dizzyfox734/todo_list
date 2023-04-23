@@ -36,7 +36,7 @@ jobs:
           username: ${{ secrets.USER }}
           port: ${{ secrets.PORT }}
           script: |
-            cd ~/app/docker_empty
+            cd ~/app/todo_list
             sh deploy.sh
       - name: Remove Github Actions IP in Security Group
         run: |
