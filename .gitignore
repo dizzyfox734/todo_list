@@ -3,11 +3,11 @@ backup
 docker/.env
 
 # IntelliJ project files
-web/.idea
-web/*.iml
-web/out
-web/gen
+todo_list/.idea
+todo_list/*.iml
+todo_list/out
+todo_list/gen
 
-web/.gradle
-web/build/
-!web/gradle/wrapper/gradle-wrapper.jar
+todo_list/.gradle
+todo_list/build/
+!todo_list/gradle/wrapper/gradle-wrapper.jar
