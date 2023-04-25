@@ -3,7 +3,6 @@ package org.dizzyfox734.todo_list.web.dto;
 import org.dizzyfox734.todo_list.domain.todo.Todos;
 
 public class TodosSaveRequestDto {
-    private Long id;
     private String content;
     private Boolean completed_fl;
 
@@ -19,7 +18,7 @@ public class TodosSaveRequestDto {
             this.content = content;
             return this;
         }
-        public Builder completed(Boolean completed_fl) {
+        public Builder completed_fl(Boolean completed_fl) {
             this.completed_fl = completed_fl;
             return this;
         }
@@ -36,7 +35,7 @@ public class TodosSaveRequestDto {
     public String getContent() {
         return content;
     }
-    public Boolean getCompleted() {
+    public Boolean getCompleted_fl() {
         return completed_fl;
     }
 

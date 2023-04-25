@@ -45,7 +45,7 @@ public class Todos {
     public String getContent() {
         return content;
     }
-    public boolean getCompleted() {
+    public boolean getCompleted_fl() {
         return completed_fl;
     }
 

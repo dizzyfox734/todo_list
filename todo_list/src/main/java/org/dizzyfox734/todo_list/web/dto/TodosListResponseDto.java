@@ -13,13 +13,13 @@ public class TodosListResponseDto {
     public String getContent() {
         return content;
     }
-    public Boolean getCompleted() {
+    public Boolean getCompleted_fl() {
         return completed_fl;
     }
 
     public TodosListResponseDto(Todos entity) {
         this.id = entity.getId();
         this.content = entity.getContent();
-        this.completed_fl = entity.getCompleted();
+        this.completed_fl = entity.getCompleted_fl();
     }
 }

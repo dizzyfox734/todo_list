@@ -31,7 +31,7 @@ public class TodosService {
     public Long update(Long id, TodosUpdateRequestDto requestDto) {
         Todos todos = todosRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 todo는 존재하지 않습니다. id=" + id));
-        todos.update(requestDto.getContent(), requestDto.getCompleted());
+        todos.update(requestDto.getContent(), requestDto.getCompleted_fl());
 
         return id;
     }

@@ -37,9 +37,9 @@ public class TodosRepositoryTest {
         // then
         Todos todos = todosList.get(0);
 
-        System.out.println(">>>>>>>>>>>>> " + todos.getContent() + ", " + (todos.getCompleted() ? "완료":"미완") + "<<<<<<<<<<<<");
+        System.out.println(">>>>>>>>>>>>> " + todos.getContent() + ", " + (todos.getCompleted_fl() ? "완료":"미완") + "<<<<<<<<<<<<");
 
         assertThat(todos.getContent()).isEqualTo(content);
-        assertThat(todos.getCompleted()).isEqualTo(Boolean.FALSE);
+        assertThat(todos.getCompleted_fl()).isEqualTo(Boolean.FALSE);
     }
 }

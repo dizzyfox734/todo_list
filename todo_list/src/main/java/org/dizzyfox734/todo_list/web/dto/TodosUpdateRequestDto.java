@@ -1,7 +1,6 @@
 package org.dizzyfox734.todo_list.web.dto;
 
 public class TodosUpdateRequestDto {
-    private Long id;
     private String content;
     private Boolean completed_fl;
 
@@ -34,7 +33,7 @@ public class TodosUpdateRequestDto {
     public String getContent() {
         return content;
     }
-    public Boolean getCompleted() {
+    public Boolean getCompleted_fl() {
         return completed_fl;
     }
 }

@@ -20,6 +20,6 @@ public class TodosResponseDto {
     public TodosResponseDto (Todos entity) {
         this.id = entity.getId();
         this.content = entity.getContent();
-        this.completed_fl = entity.getCompleted();
+        this.completed_fl = entity.getCompleted_fl();
     }
 }
