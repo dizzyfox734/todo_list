@@ -1,6 +1,12 @@
 {{>layout/header}}
 
 <h1>Todo list</h1>
+
+<div>
+    <input id="todo-save" />
+    <button onclick="save()">추가하기</button>
+</div>
+
 <table>
     <thead>
         <tr>
@@ -19,4 +25,5 @@
         {{/todos}}
     </tbody>
 </table>
+
 {{>layout/footer}}
