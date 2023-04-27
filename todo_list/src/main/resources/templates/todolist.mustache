@@ -4,7 +4,7 @@
 
 <div>
     <input id="todo-save" />
-    <button onclick="save()">추가하기</button>
+    <button onclick="saveTodo()">추가하기</button>
 </div>
 
 <table>
@@ -13,6 +13,7 @@
             <th>번호</th>
             <th>할 일</th>
             <th>상태</th>
+            <th>삭제</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
                 <td>{{id}}</td>
                 <td>{{content}}</td>
                 <td>{{completed_fl}}</td>
+                <td><button onclick="deleteTodo({{id}})">삭제</button></td>
             </tr>
         {{/todos}}
     </tbody>
