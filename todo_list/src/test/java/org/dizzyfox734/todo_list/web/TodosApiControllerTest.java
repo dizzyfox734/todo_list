@@ -126,4 +126,24 @@ public class TodosApiControllerTest {
         assertThat(all.get(0).getContent()).isEqualTo(updatedContent);
         assertThat(all.get(0).getCompleted_fl()).isEqualTo(updatedCompleted_fl);
     }
+
+    @Test
+    public void complete_todos() throws Exception {
+        // given
+        String content = "content";
+        Boolean completed_fl = false;
+        Long todosId = todosRepository.save(new Todos.Builder(content, completed_fl).build()).getId();
+
+        String url = "http://localhost:" + port + "/api/todo/complete/" + todosId;
+
+        // when
+        mvc.perform(post(url))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        // then
+        List<Todos> all = todosRepository.findAll();
+        assertThat(all.get(0).getCompleted_fl()).isEqualTo(true);
+
+    }
 }
