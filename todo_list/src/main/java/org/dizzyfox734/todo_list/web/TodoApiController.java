@@ -31,4 +31,9 @@ public class TodoApiController {
 
         return id;
     }
+
+    @PostMapping("/api/todo/complete/{id}")
+    public Long complete(@PathVariable Long id) {
+        return todosService.complete(id);
+    }
 }

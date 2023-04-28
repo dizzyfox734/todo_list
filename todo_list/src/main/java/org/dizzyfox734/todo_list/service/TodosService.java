@@ -56,4 +56,13 @@ public class TodosService {
                 .map(TodosListResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    @Transactional
+    public Long complete(Long id) {
+        Todos todos = todosRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 todo는 존재하지 않습니다. id=" + id));
+        todos.complete();
+
+        return id;
+    }
 }

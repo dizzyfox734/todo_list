@@ -53,4 +53,8 @@ public class Todos {
         this.content = content;
         this.completed_fl = completed_fl;
     }
+
+    public void complete() {
+        this.completed_fl = true;
+    }
 }
