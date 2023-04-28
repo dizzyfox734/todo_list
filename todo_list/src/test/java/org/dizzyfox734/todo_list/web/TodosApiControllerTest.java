@@ -5,6 +5,7 @@ import org.dizzyfox734.todo_list.domain.todo.Todos;
 import org.dizzyfox734.todo_list.domain.todo.TodosRepository;
 import org.dizzyfox734.todo_list.service.TodosService;
 import org.dizzyfox734.todo_list.web.dto.TodosSaveRequestDto;
+import org.dizzyfox734.todo_list.web.dto.TodosUpdateRequestDto;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,8 +24,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -97,5 +97,33 @@ public class TodosApiControllerTest {
 
         // then
         assertThatThrownBy(() -> todosService.findById(todosId)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void update_todos() throws Exception {
+        // given
+        String content = "content";
+        Boolean completed_fl = false;
+        Long todosId = todosRepository.save(new Todos.Builder(content, completed_fl).build()).getId();
+
+        String url = "http://localhost:" + port + "/api/todo/" + todosId;
+        String updatedContent = "content2";
+        Boolean updatedCompleted_fl = true;
+        TodosUpdateRequestDto updateRequestDto = new TodosUpdateRequestDto.Builder()
+                .content(updatedContent)
+                .completed_fl(updatedCompleted_fl)
+                .build();
+
+        // when
+        mvc.perform(put(url)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(new ObjectMapper().writeValueAsString(updateRequestDto)))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        // then
+        List<Todos> all = todosRepository.findAll();
+        assertThat(all.get(0).getContent()).isEqualTo(updatedContent);
+        assertThat(all.get(0).getCompleted_fl()).isEqualTo(updatedCompleted_fl);
     }
 }
