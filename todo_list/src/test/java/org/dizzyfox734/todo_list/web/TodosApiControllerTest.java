@@ -3,6 +3,7 @@ package org.dizzyfox734.todo_list.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dizzyfox734.todo_list.domain.todo.Todos;
 import org.dizzyfox734.todo_list.domain.todo.TodosRepository;
+import org.dizzyfox734.todo_list.service.TodosService;
 import org.dizzyfox734.todo_list.web.dto.TodosSaveRequestDto;
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +22,10 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -34,6 +38,9 @@ public class TodosApiControllerTest {
     private TestRestTemplate restTemplate;
     @Autowired
     private TodosRepository todosRepository;
+
+    @Autowired
+    TodosService todosService;
 
     @Autowired
     private WebApplicationContext context;
@@ -73,5 +80,22 @@ public class TodosApiControllerTest {
         List<Todos> all = todosRepository.findAll();
         assertThat(all.get(0).getContent()).isEqualTo(content);
         assertThat(all.get(0).getCompleted_fl()).isEqualTo(completed_fl);
+    }
+
+    @Test
+    public void delete_todos() throws Exception {
+        // given
+        String content = "content";
+        Boolean completed_fl = false;
+        Long todosId = todosRepository.save(new Todos.Builder(content, completed_fl).build()).getId();
+        String url = "http://localhost:" + port + "/api/todo/" + todosId;
+
+        // when
+        mvc.perform(delete(url))
+                .andExpect(status().isOk())
+                .andDo(print());
+
+        // then
+        assertThatThrownBy(() -> todosService.findById(todosId)).isInstanceOf(IllegalArgumentException.class);
     }
 }
