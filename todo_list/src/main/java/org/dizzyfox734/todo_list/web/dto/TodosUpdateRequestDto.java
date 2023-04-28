@@ -16,7 +16,7 @@ public class TodosUpdateRequestDto {
             this.content = content;
             return this;
         }
-        public TodosUpdateRequestDto.Builder completed(Boolean completed_fl) {
+        public TodosUpdateRequestDto.Builder completed_fl(Boolean completed_fl) {
             this.completed_fl = completed_fl;
             return this;
         }
